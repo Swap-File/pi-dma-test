@@ -1,0 +1,45 @@
+
+ 
+/dts-v1/;
+/plugin/;
+ 
+/ {
+	compatible = "brcm,bcm2835";
+ 
+	fragment@0 {
+		target = <&spi0>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+ 
+			spidev@1{
+				status = "disabled";
+			};
+ 
+			spi_test0@1{
+				spi-max-frequency = <32000000>;
+				reg = <1>;
+				compatible = "spi-dma-test";
+			};
+		};
+	};
+	fragment@1 {
+		target = <&spi1>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+ 
+			spidev@1{
+				status = "disabled";
+			};
+ 
+			spi_test1@1{
+				spi-max-frequency = <32000000>;
+				reg = <1>;
+				compatible = "spi-dma-test";
+			};
+		};
+	};
+};
